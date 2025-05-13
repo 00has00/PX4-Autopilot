@@ -75,6 +75,14 @@ OSDatxxxx::init()
 		return ret;
 	}
 
+	// Figure out which optional OSD elements are on display
+	bool show_airspeed = _param_osd_atxxxx_airspeed.get();
+	bool show_attitude = _param_osd_atxxxx_attitude.get();
+
+	// TODO: Delete me - these are just noops to avoide unused variable errors.
+	if (show_airspeed) {};
+	if (show_attitude) {};
+
 	// clear the screen
 	int num_rows = (_param_osd_atxxxx_cfg.get() == 1 ? OSD_NUM_ROWS_NTSC : OSD_NUM_ROWS_PAL);
 

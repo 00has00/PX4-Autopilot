@@ -51,6 +51,8 @@
 #include <uORB/topics/battery_status.h>
 #include <uORB/topics/vehicle_local_position.h>
 #include <uORB/topics/vehicle_status.h>
+#include <uORB/topics/vehicle_attitude.h>
+#include <uORB/topics/airspeed_validated.h>
 
 #define OSD_SPI_BUS_SPEED (2000000L) /*  2 MHz  */
 
@@ -109,6 +111,16 @@ private:
 	uORB::Subscription _battery_sub{ORB_ID(battery_status)};
 	uORB::Subscription _local_position_sub{ORB_ID(vehicle_local_position)};
 	uORB::Subscription _vehicle_status_sub{ORB_ID(vehicle_status)};
+	uORB::Subscription _vehicle_attitude_sub{ORB_ID(vehicle_attitude)};
+	uORB::Subscription _airspeed_validated_sub{ORB_ID(airspeed_validated)};
+
+	// Attitude
+	float _attitude_roll{0.f};
+	float _attitude_pitch{0.f};
+
+	// Airspeed
+	float _indicated_airspeed{0.f};
+	float _true_airspeed{0.f};
 
 	// battery
 	float _battery_voltage_v{0.f};
@@ -127,6 +139,8 @@ private:
 	uint8_t _nav_state{0};
 
 	DEFINE_PARAMETERS(
-		(ParamInt<px4::params::OSD_ATXXXX_CFG>) _param_osd_atxxxx_cfg
+		(ParamInt<px4::params::OSD_ATXXXX_CFG>) _param_osd_atxxxx_cfg,
+		(ParamBool<px4::params::OSD_ATXXXX_AIRSP>) _param_osd_atxxxx_airspeed,
+		(ParamBool<px4::params::OSD_ATXXXX_ATTI>) _param_osd_atxxxx_attitude
 	)
 };

@@ -46,3 +46,29 @@
 *
 */
 PARAM_DEFINE_INT32(OSD_ATXXXX_CFG, 0);
+
+/**
+* Enable AirSpeed on screen
+*
+* @value 0 Disabled
+* @value 1 Show Airspeed
+*
+* @reboot_required true
+* @boolean
+* @group OSD
+*
+*/
+PARAM_DEFINE_INT32(OSD_ATXXXX_AIRSP, 0);
+
+/**
+* Enable Attitued on screen - artificial horizon roll/pitch
+*
+* @value 0 Disabled
+* @value 1 Show Airspeed
+*
+* @reboot_required true
+* @boolean
+* @group OSD
+*
+*/
+PARAM_DEFINE_INT32(OSD_ATXXXX_ATTI, 0);
